@@ -11,7 +11,7 @@ const winningCombinations = [
   [2, 4, 6], // diagonale Reihen
 ];
 
-let currentPlayer = "circle";
+let currentPlayer = "kreis";
 
 function init() {
   render();
@@ -29,10 +29,10 @@ function render() {
       const index = i * 3 + j;
       let symbol = "";
 
-      if (fields[index] === "circle") {
-        symbol = generateCircleSVG(index);
-      } else if (fields[index] === "cross") {
+      if (fields[index] === "kreis") {
         symbol = generateCrossSVG(index);
+      } else if (fields[index] === "kreuz") {
+        symbol = generateCircleSVG(index);
       }
 
       tableHTML += `<td onclick="addSymbol(${index})" class="fixed-size-td">${symbol}</td>`;
@@ -53,7 +53,7 @@ function addSymbol(index) {
   }
 
   const symbol =
-    currentPlayer === "circle"
+    currentPlayer === "kreis"
       ? generateCircleSVG(index)
       : generateCrossSVG(index);
 
@@ -65,7 +65,8 @@ function addSymbol(index) {
 
   checkGameOver();
 
-  currentPlayer = currentPlayer === "circle" ? "cross" : "circle"; // Wechsle den Spieler
+  currentPlayer = currentPlayer === "kreis" ? "kreuz" : "kreis"; // Wechsle den Spieler
+  
   contentcurrentplayer.innerHTML = `<div class="contentcurrentplayer">Nächster Spieler: ${currentPlayer}</div>`;
 }
 
